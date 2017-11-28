@@ -24,8 +24,8 @@ class EleitorSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         user_data = validated_data.pop('usuario')
-        u = User.objects.create(**user_data)
-        e = Pessoa.objects.create(usuario = e, **validated_data)
+        e = User.objects.create(**user_data)
+        e = Eleitor.objects.create(usuario = e, **validated_data)
         return e
 
 class VagaSerializer(serializers.HyperlinkedModelSerializer):
